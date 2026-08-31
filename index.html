@@ -1900,7 +1900,7 @@
     const wxForecast = document.getElementById("wxForecast");
     const wxStatus = document.getElementById("wxStatus");
 
-    let wxState = { current: null, days: [], location: "", settled: false, loading: false };
+    let wxState = { current: null, days: [], location: "", settled: false, loading: false, reqId: 0 };
     let wxLocation = null;
     try { wxLocation = JSON.parse(localStorage.getItem("omarchy-weather-location") || "null"); } catch (e) { wxLocation = null; }
     let wxEditing = false;
@@ -1965,6 +1965,7 @@
     }
 
     function wxFetch() {
+      const reqId = ++wxState.reqId;
       wxState.loading = true;
       if (wxState.settled) wxStatus.hidden = true;
       else { wxStatus.hidden = false; wxStatus.textContent = "Fetching forecast…"; }
@@ -1975,11 +1976,15 @@
           + "&daily=weather_code,temperature_2m_max,temperature_2m_min"
           + "&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,weather_code,is_day"
           + "&forecast_days=4&timezone=auto";
-        fetch(url).then(r => r.json()).then(parseOpenMeteo).catch(wxRetry);
+        fetch(url)
+          .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+          .then(data => { if (reqId === wxState.reqId) parseOpenMeteo(data); })
+          .catch(() => { if (reqId === wxState.reqId) wxRetry(); });
       } else {
         fetch("https://wttr.in/?format=j1")
           .then(r => { if (!r.ok) throw new Error(); return r.json(); })
-          .then(parseWttr).catch(wxRetry);
+          .then(data => { if (reqId === wxState.reqId) parseWttr(data); })
+          .catch(() => { if (reqId === wxState.reqId) wxRetry(); });
       }
     }
 
@@ -2092,12 +2097,16 @@
 
     const appWindow = document.getElementById("appWindow");
 
+    function centerAbout() {
+      appWindow.style.left = Math.max(8, Math.round((window.innerWidth - appWindow.offsetWidth) / 2)) + "px";
+      appWindow.style.top = Math.max(8, Math.round((window.innerHeight - appWindow.offsetHeight) / 2)) + "px";
+    }
+
     function openAbout() {
       closePanels();
       if (launcher.classList.contains("open")) close();
       appWindow.classList.add("open");
-      appWindow.style.left = Math.max(8, Math.round((window.innerWidth - appWindow.offsetWidth) / 2)) + "px";
-      appWindow.style.top = Math.max(8, Math.round((window.innerHeight - appWindow.offsetHeight) / 2)) + "px";
+      centerAbout();
     }
 
     function closeAbout() {
@@ -2171,6 +2180,11 @@
 
     document.getElementById("securityBtn").addEventListener("click", toggleSecurity);
     document.getElementById("securityClose").addEventListener("click", closeSecurity);
+
+    // keep the shell app centered when the window resizes
+    window.addEventListener("resize", () => {
+      if (appWindow.classList.contains("open")) centerAbout();
+    });
 
     /* ── Panel manager ────────────────────────────────────────── */
 
