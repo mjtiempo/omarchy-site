@@ -735,6 +735,50 @@
       }
     }
 
+    /* ── The Manual: a full-tile app on workspace 3 ───────────── */
+
+    .webapp {
+      display: none;
+      position: fixed;
+      inset: calc(var(--bar-height) + 6px) 6px 6px 6px;
+      z-index: 20;
+      flex-direction: column;
+      background: var(--background);
+      border: 1px solid var(--border-soft);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
+    }
+
+    body[data-theme="3"] .webapp { display: flex; }
+
+    .webapp-bar {
+      flex: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 30px;
+      padding: 0 12px;
+      background: var(--background);
+      border-bottom: 1px solid var(--hairline);
+      font-size: 11px;
+      color: var(--dim);
+    }
+
+    .webapp-url {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .webapp-frame {
+      flex: 1 1 0;
+      min-height: 0;
+      width: 100%;
+      border: 0;
+      background: var(--background);
+    }
+
     /* ── The Omarchy shell app (about window) ─────────────────── */
 
     .app-window {
@@ -1014,6 +1058,13 @@
         <span class="video-creator">Alex Finn</span>
       </figcaption>
     </figure>
+  </div>
+
+  <div class="webapp" id="webapp">
+    <div class="webapp-bar">
+      <span class="webapp-url">https://omarchy.org/manual/</span>
+    </div>
+    <iframe class="webapp-frame" src="https://omarchy.org/manual/" loading="lazy" title="The Omarchy Manual"></iframe>
   </div>
   <div class="app-window" id="appWindow" role="dialog" aria-label="Omarchy shell">
     <div class="app-body">
