@@ -657,38 +657,11 @@
 
     .app-window.open { display: flex; }
 
-    .app-titlebar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 36px;
-      padding: 0 8px 0 14px;
-      border-bottom: 1px solid var(--hairline);
-      background: var(--background);
-      cursor: grab;
-      user-select: none;
-      font-size: 11px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--dim);
-    }
-
-    .app-titlebar:active { cursor: grabbing; }
-
-    .app-close {
-      width: 24px;
-      height: 24px;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--foreground);
-    }
-
-    .app-close:hover { background: var(--hover-fill); color: var(--accent); }
+    /* The shell window is fixed in place, like Omarchy itself: no chrome,
+       no close, no moving — it sits centered on the workspace. */
 
     .app-body {
-      padding: 20px 24px 26px;
+      padding: 24px 28px 28px;
       overflow-y: auto;
       text-align: center;
     }
@@ -903,10 +876,6 @@
   </div>
 
   <div class="app-window" id="appWindow" role="dialog" aria-label="Omarchy shell">
-    <div class="app-titlebar" id="appTitlebar">
-      <span class="app-title">Omarchy</span>
-      <button class="app-close" id="appClose" aria-label="Close">&#10005;</button>
-    </div>
     <div class="app-body">
       <svg class="app-logo" viewBox="0 0 4131 950" role="img" aria-label="OMARCHY"><g fill="currentColor" shape-rendering="crispEdges"><rect x="867" y="0" width="153" height="50"/><rect x="102" y="50" width="255" height="50"/><rect x="663" y="50" width="561" height="50"/><rect x="1530" y="50" width="357" height="50"/><rect x="2091" y="50" width="357" height="50"/><rect x="2652" y="50" width="357" height="50"/><rect x="3213" y="50" width="51" height="50"/><rect x="3417" y="50" width="51" height="50"/><rect x="3774" y="50" width="51" height="50"/><rect x="3978" y="50" width="51" height="50"/><rect x="51" y="100" width="357" height="50"/><rect x="612" y="100" width="663" height="50"/><rect x="1479" y="100" width="408" height="50"/><rect x="2040" y="100" width="408" height="50"/><rect x="2601" y="100" width="408" height="50"/><rect x="3162" y="100" width="102" height="50"/><rect x="3417" y="100" width="102" height="50"/><rect x="3723" y="100" width="102" height="50"/><rect x="3978" y="100" width="102" height="50"/><rect x="0" y="150" width="153" height="50"/><rect x="306" y="150" width="153" height="50"/><rect x="561" y="150" width="153" height="50"/><rect x="867" y="150" width="153" height="50"/><rect x="1173" y="150" width="153" height="50"/><rect x="1428" y="150" width="153" height="50"/><rect x="1734" y="150" width="153" height="50"/><rect x="1989" y="150" width="153" height="50"/><rect x="2295" y="150" width="153" height="50"/><rect x="2550" y="150" width="153" height="50"/><rect x="2856" y="150" width="153" height="50"/><rect x="3111" y="150" width="153" height="50"/><rect x="3417" y="150" width="153" height="50"/><rect x="3672" y="150" width="153" height="50"/><rect x="3978" y="150" width="153" height="50"/><rect x="0" y="200" width="153" height="50"/><rect x="306" y="200" width="153" height="50"/><rect x="561" y="200" width="153" height="50"/><rect x="867" y="200" width="153" height="50"/><rect x="1173" y="200" width="153" height="50"/><rect x="1428" y="200" width="153" height="50"/><rect x="1734" y="200" width="153" height="50"/><rect x="1989" y="200" width="153" height="50"/><rect x="2295" y="200" width="153" height="50"/><rect x="2550" y="200" width="153" height="50"/><rect x="2856" y="200" width="153" height="50"/><rect x="3111" y="200" width="153" height="50"/><rect x="3417" y="200" width="153" height="50"/><rect x="3672" y="200" width="153" height="50"/><rect x="3978" y="200" width="153" height="50"/><rect x="0" y="250" width="153" height="50"/><rect x="306" y="250" width="153" height="50"/><rect x="561" y="250" width="153" height="50"/><rect x="867" y="250" width="153" height="50"/><rect x="1173" y="250" width="153" height="50"/><rect x="1428" y="250" width="153" height="50"/><rect x="1734" y="250" width="153" height="50"/><rect x="1989" y="250" width="153" height="50"/><rect x="2295" y="250" width="153" height="50"/><rect x="2550" y="250" width="153" height="50"/><rect x="2856" y="250" width="102" height="50"/><rect x="3111" y="250" width="153" height="50"/><rect x="3417" y="250" width="153" height="50"/><rect x="3672" y="250" width="153" height="50"/><rect x="3978" y="250" width="153" height="50"/><rect x="0" y="300" width="153" height="50"/><rect x="306" y="300" width="153" height="50"/><rect x="561" y="300" width="153" height="50"/><rect x="867" y="300" width="153" height="50"/><rect x="1173" y="300" width="153" height="50"/><rect x="1428" y="300" width="153" height="50"/><rect x="1734" y="300" width="153" height="50"/><rect x="1989" y="300" width="153" height="50"/><rect x="2295" y="300" width="153" height="50"/><rect x="2550" y="300" width="153" height="50"/><rect x="2856" y="300" width="51" height="50"/><rect x="3111" y="300" width="153" height="50"/><rect x="3417" y="300" width="153" height="50"/><rect x="3672" y="300" width="153" height="50"/><rect x="3978" y="300" width="153" height="50"/><rect x="0" y="350" width="153" height="50"/><rect x="306" y="350" width="153" height="50"/><rect x="561" y="350" width="153" height="50"/><rect x="867" y="350" width="153" height="50"/><rect x="1173" y="350" width="153" height="50"/><rect x="1428" y="350" width="153" height="50"/><rect x="1734" y="350" width="153" height="50"/><rect x="1989" y="350" width="153" height="50"/><rect x="2295" y="350" width="153" height="50"/><rect x="2550" y="350" width="153" height="50"/><rect x="3111" y="350" width="153" height="50"/><rect x="3417" y="350" width="153" height="50"/><rect x="3672" y="350" width="153" height="50"/><rect x="3978" y="350" width="153" height="50"/><rect x="0" y="400" width="153" height="50"/><rect x="306" y="400" width="153" height="50"/><rect x="561" y="400" width="153" height="50"/><rect x="867" y="400" width="153" height="50"/><rect x="1173" y="400" width="153" height="50"/><rect x="1377" y="400" width="510" height="50"/><rect x="1938" y="400" width="459" height="50"/><rect x="2550" y="400" width="153" height="50"/><rect x="3060" y="400" width="561" height="50"/><rect x="3672" y="400" width="459" height="50"/><rect x="0" y="450" width="153" height="50"/><rect x="306" y="450" width="153" height="50"/><rect x="561" y="450" width="153" height="50"/><rect x="867" y="450" width="153" height="50"/><rect x="1173" y="450" width="153" height="50"/><rect x="1377" y="450" width="510" height="50"/><rect x="1938" y="450" width="408" height="50"/><rect x="2550" y="450" width="153" height="50"/><rect x="3009" y="450" width="561" height="50"/><rect x="3672" y="450" width="459" height="50"/><rect x="0" y="500" width="153" height="50"/><rect x="306" y="500" width="153" height="50"/><rect x="561" y="500" width="153" height="50"/><rect x="867" y="500" width="153" height="50"/><rect x="1173" y="500" width="153" height="50"/><rect x="1428" y="500" width="153" height="50"/><rect x="1734" y="500" width="153" height="50"/><rect x="1989" y="500" width="153" height="50"/><rect x="2550" y="500" width="153" height="50"/><rect x="3111" y="500" width="153" height="50"/><rect x="3417" y="500" width="153" height="50"/><rect x="3978" y="500" width="153" height="50"/><rect x="0" y="550" width="153" height="50"/><rect x="306" y="550" width="153" height="50"/><rect x="561" y="550" width="153" height="50"/><rect x="867" y="550" width="153" height="50"/><rect x="1173" y="550" width="153" height="50"/><rect x="1428" y="550" width="153" height="50"/><rect x="1734" y="550" width="153" height="50"/><rect x="1938" y="550" width="510" height="50"/><rect x="2550" y="550" width="153" height="50"/><rect x="2856" y="550" width="51" height="50"/><rect x="3111" y="550" width="153" height="50"/><rect x="3417" y="550" width="153" height="50"/><rect x="3723" y="550" width="102" height="50"/><rect x="3978" y="550" width="153" height="50"/><rect x="0" y="600" width="153" height="50"/><rect x="306" y="600" width="153" height="50"/><rect x="561" y="600" width="153" height="50"/><rect x="867" y="600" width="153" height="50"/><rect x="1173" y="600" width="153" height="50"/><rect x="1428" y="600" width="153" height="50"/><rect x="1734" y="600" width="153" height="50"/><rect x="1938" y="600" width="510" height="50"/><rect x="2550" y="600" width="153" height="50"/><rect x="2856" y="600" width="102" height="50"/><rect x="3111" y="600" width="153" height="50"/><rect x="3417" y="600" width="153" height="50"/><rect x="3672" y="600" width="153" height="50"/><rect x="3978" y="600" width="153" height="50"/><rect x="0" y="650" width="153" height="50"/><rect x="306" y="650" width="153" height="50"/><rect x="561" y="650" width="153" height="50"/><rect x="867" y="650" width="153" height="50"/><rect x="1173" y="650" width="153" height="50"/><rect x="1428" y="650" width="153" height="50"/><rect x="1734" y="650" width="153" height="50"/><rect x="1989" y="650" width="153" height="50"/><rect x="2295" y="650" width="153" height="50"/><rect x="2550" y="650" width="153" height="50"/><rect x="2856" y="650" width="153" height="50"/><rect x="3111" y="650" width="153" height="50"/><rect x="3417" y="650" width="153" height="50"/><rect x="3672" y="650" width="153" height="50"/><rect x="3978" y="650" width="153" height="50"/><rect x="0" y="700" width="153" height="50"/><rect x="306" y="700" width="153" height="50"/><rect x="561" y="700" width="153" height="50"/><rect x="867" y="700" width="153" height="50"/><rect x="1173" y="700" width="153" height="50"/><rect x="1428" y="700" width="153" height="50"/><rect x="1734" y="700" width="153" height="50"/><rect x="1989" y="700" width="153" height="50"/><rect x="2295" y="700" width="153" height="50"/><rect x="2550" y="700" width="153" height="50"/><rect x="2856" y="700" width="153" height="50"/><rect x="3111" y="700" width="153" height="50"/><rect x="3417" y="700" width="153" height="50"/><rect x="3672" y="700" width="153" height="50"/><rect x="3978" y="700" width="153" height="50"/><rect x="51" y="750" width="357" height="50"/><rect x="612" y="750" width="102" height="50"/><rect x="867" y="750" width="153" height="50"/><rect x="1173" y="750" width="102" height="50"/><rect x="1428" y="750" width="153" height="50"/><rect x="1734" y="750" width="102" height="50"/><rect x="1989" y="750" width="153" height="50"/><rect x="2295" y="750" width="153" height="50"/><rect x="2550" y="750" width="408" height="50"/><rect x="3111" y="750" width="153" height="50"/><rect x="3417" y="750" width="102" height="50"/><rect x="3723" y="750" width="357" height="50"/><rect x="102" y="800" width="255" height="50"/><rect x="663" y="800" width="51" height="50"/><rect x="867" y="800" width="153" height="50"/><rect x="1173" y="800" width="51" height="50"/><rect x="1428" y="800" width="153" height="50"/><rect x="1734" y="800" width="51" height="50"/><rect x="1989" y="800" width="153" height="50"/><rect x="2295" y="800" width="153" height="50"/><rect x="2550" y="800" width="357" height="50"/><rect x="3111" y="800" width="153" height="50"/><rect x="3417" y="800" width="51" height="50"/><rect x="3774" y="800" width="255" height="50"/><rect x="1989" y="850" width="153" height="50"/><rect x="2295" y="850" width="102" height="50"/><rect x="1989" y="900" width="153" height="50"/><rect x="2295" y="900" width="51" height="50"/></g></svg>
       <h1 class="app-heading">Beautiful, Fun &amp; Opinionated Linux by <a href="https://dhh.dk" target="_blank" rel="noopener noreferrer">DHH</a></h1>
@@ -1548,11 +1517,9 @@
     weatherBtn.addEventListener("auxclick", (event) => { if (event.button === 1) { event.preventDefault(); wxRetries = 0; wxFetch(); } });
     weatherBtn.addEventListener("contextmenu", (event) => { event.preventDefault(); wxRetries = 0; wxFetch(); });
 
-    /* ── Omarchy shell app (about window, opens centered) ─────── */
+    /* ── Omarchy shell app (fixed on workspace 1, like the real desktop) ── */
 
     const appWindow = document.getElementById("appWindow");
-    const appTitlebar = document.getElementById("appTitlebar");
-    let aboutDrag = null;
 
     function openAbout() {
       closePanels();
@@ -1566,31 +1533,12 @@
       appWindow.classList.remove("open");
     }
 
-    document.getElementById("appClose").addEventListener("click", closeAbout);
-
     // The Omarchy shell app lives permanently on workspace 1: it is open on
     // any visit that lands on that workspace and hidden everywhere else.
     function syncAboutWindow() {
       if (Number(document.body.dataset.theme || 1) === 1) openAbout();
       else closeAbout();
     }
-
-    appTitlebar.addEventListener("pointerdown", (event) => {
-      if (event.target.closest(".app-close")) return;
-      aboutDrag = { x: event.clientX, y: event.clientY, left: appWindow.offsetLeft, top: appWindow.offsetTop };
-      appTitlebar.setPointerCapture(event.pointerId);
-      event.preventDefault();
-    });
-
-    appTitlebar.addEventListener("pointermove", (event) => {
-      if (!aboutDrag) return;
-      const left = Math.max(8, Math.min(window.innerWidth - appWindow.offsetWidth - 8, aboutDrag.left + event.clientX - aboutDrag.x));
-      const top = Math.max(8, Math.min(window.innerHeight - appWindow.offsetHeight - 8, aboutDrag.top + event.clientY - aboutDrag.y));
-      appWindow.style.left = left + "px";
-      appWindow.style.top = top + "px";
-    });
-
-    appTitlebar.addEventListener("pointerup", () => { aboutDrag = null; });
 
     /* ── Panel manager ────────────────────────────────────────── */
 
@@ -1614,7 +1562,6 @@
 
     document.addEventListener("keydown", (event) => {
       if (launcher.classList.contains("open")) return;
-      if (appWindow.classList.contains("open") && event.key === "Escape") { closeAbout(); return; }
       const calOpen = calPanel.classList.contains("open");
       if (calOpen && !wxEditing) {
         if (event.key === "Escape") { closePanels(); }
