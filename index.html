@@ -761,7 +761,8 @@
       box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
     }
 
-    body[data-theme="3"] .webapp { display: flex; }
+    body[data-theme="3"] .webapp-manual,
+    body[data-theme="4"] .webapp-news { display: flex; }
 
     .webapp-bar {
       flex: none;
@@ -1090,11 +1091,18 @@
     </figure>
   </div>
 
-  <div class="webapp" id="webapp">
+  <div class="webapp webapp-manual" id="webapp">
     <div class="webapp-bar">
       <span class="webapp-url">https://omarchy.org/manual/</span>
     </div>
     <iframe class="webapp-frame" src="https://omarchy.org/manual/" loading="lazy" title="The Omarchy Manual"></iframe>
+  </div>
+
+  <div class="webapp webapp-news" id="newsApp">
+    <div class="webapp-bar">
+      <span class="webapp-url">https://omarchy.org/news/</span>
+    </div>
+    <iframe class="webapp-frame" src="https://omarchy.org/news/" loading="lazy" title="Omarchy News"></iframe>
   </div>
   <div class="app-window" id="appWindow" role="dialog" aria-label="Omarchy shell">
     <div class="app-body">
