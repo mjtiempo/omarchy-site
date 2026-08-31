@@ -1341,7 +1341,7 @@
           <span>GitHub</span>
         </a>
 
-        <a class="link" role="option" aria-label="Security reporting" data-search="security reporting" href="/security/">
+        <a class="link" role="option" aria-label="Security reporting" data-search="security reporting" data-security="1" href="/security/">
           <svg viewBox="0 0 32 32"><path d="m16 1 7 2.5v7.5c0 5.2-3.5 8.4-7 9.5-3.5-1.1-7-4.3-7-9.5v-7.5z" fill="currentColor"/></svg>
           <span>Security</span>
         </a>
@@ -2000,6 +2000,15 @@
         event.preventDefault();
         setTheme(Number(link.dataset.workspace));
         syncAboutWindow();
+        if (launcher.classList.contains("open")) close();
+      });
+    }
+
+    // Security opens the closable popup, same as the bar icon
+    for (const link of document.querySelectorAll(".link[data-security]")) {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        securityPop.classList.add("open");
         if (launcher.classList.contains("open")) close();
       });
     }
