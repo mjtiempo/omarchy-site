@@ -1,0 +1,1181 @@
+    :root {
+      /* Tokyo Night — the default Omarchy theme (workspace 1) */
+      --background: #1a1b26;
+      --dark-background: #13141c;
+      --darker-background: #0e0e14;
+      --lighter-background: #24283b;
+      --foreground: #a9b1d6;
+      --dark-foreground: #565f89;
+      --light-foreground: #b4bee6;
+      --bright-foreground: #c0caf5;
+      --accent: #7aa2f7;
+      --selection: #292e42;
+      --muted: #414868;
+      --green: #9ece6a;
+
+      /* Derived shell tokens (theme 1 values; themes 2-8 override below) */
+      --hover-fill: rgba(169, 177, 214, 0.08);       /* controls hover-cursor, 8% */
+      --active-fill: rgba(122, 162, 247, 0.18);      /* selected fill, 18% */
+      --selected-text: var(--accent);
+      --scrim: rgba(26, 27, 38, 0.5);                /* menu scrim, 50% */
+      --card-bg: rgba(26, 27, 38, 0.95);             /* menu card, 95% */
+      --hairline: rgba(169, 177, 214, 0.12);
+      --border-soft: color-mix(in srgb, var(--foreground) 40%, transparent); /* controls normal-border */
+      --dim: color-mix(in srgb, var(--foreground) 66%, #000);        /* Qt.darker 1.5 */
+      --dim2: color-mix(in srgb, var(--foreground) 52%, #000);       /* Qt.darker 1.9 */
+      --dim3: color-mix(in srgb, var(--foreground) 45%, #000);       /* Qt.darker 2.2 */
+      --wallpaper: url("../images/backgrounds/tokyo-night.webp");
+
+      --bar-height: 44px;
+
+      --font: "JetBrains Mono", monospace;
+    }
+
+    /* Built-in Omarchy themes, one per workspace. Each block sets the
+       theme's colors.toml palette plus its default background. */
+        body[data-theme="2"] {
+      --background: #1e1e2e;
+      --foreground: #cdd6f4;
+      --bright-foreground: #cdd6f4;
+      --dark-foreground: #6c7086;
+      --light-foreground: #bac2de;
+      --accent: #89b4fa;
+      --muted: #585b70;
+      --hover-fill: rgba(205, 214, 244, 0.08);
+      --active-fill: rgba(137, 180, 250, 0.18);
+      --scrim: rgba(30, 30, 46, 0.5);
+      --card-bg: rgba(30, 30, 46, 0.95);
+      --hairline: rgba(205, 214, 244, 0.12);
+      --green: #a6e3a1;
+      --wallpaper: url("../images/backgrounds/catppuccin.webp");
+    }
+
+    body[data-theme="3"] {
+      --background: #16242d;
+      --foreground: #d6e2ee;
+      --bright-foreground: #f2fcff;
+      --dark-foreground: #4d86b0;
+      --light-foreground: #d6e2ee;
+      --accent: #8bc9eb;
+      --muted: #304860;
+      --hover-fill: rgba(214, 226, 238, 0.08);
+      --active-fill: rgba(139, 201, 235, 0.18);
+      --scrim: rgba(22, 36, 45, 0.5);
+      --card-bg: rgba(22, 36, 45, 0.95);
+      --hairline: rgba(214, 226, 238, 0.12);
+      --green: #5e95bc;
+      --wallpaper: url("../images/backgrounds/lumon.webp");
+    }
+
+    body[data-theme="4"] {
+      --background: #060B1E;
+      --foreground: #ffcead;
+      --bright-foreground: #ffcead;
+      --dark-foreground: #6d7db6;
+      --light-foreground: #c9b8a6;
+      --accent: #7d82d9;
+      --muted: #6d7db6;
+      --hover-fill: rgba(255, 206, 173, 0.08);
+      --active-fill: rgba(125, 130, 217, 0.18);
+      --scrim: rgba(6, 11, 30, 0.5);
+      --card-bg: rgba(6, 11, 30, 0.95);
+      --hairline: rgba(255, 206, 173, 0.12);
+      --green: #92a593;
+      --wallpaper: url("../images/backgrounds/ethereal.webp");
+    }
+
+    body[data-theme="5"] {
+      --background: #2d353b;
+      --foreground: #d3c6aa;
+      --bright-foreground: #d3c6aa;
+      --dark-foreground: #4f585e;
+      --light-foreground: #9da9a0;
+      --accent: #7fbbb3;
+      --muted: #475258;
+      --hover-fill: rgba(211, 198, 170, 0.08);
+      --active-fill: rgba(127, 187, 179, 0.18);
+      --scrim: rgba(45, 53, 59, 0.5);
+      --card-bg: rgba(45, 53, 59, 0.95);
+      --hairline: rgba(211, 198, 170, 0.12);
+      --green: #a7c080;
+      --wallpaper: url("../images/backgrounds/everforest.webp");
+    }
+
+    body[data-theme="6"] {
+      --background: #282828;
+      --foreground: #d4be98;
+      --bright-foreground: #d4be98;
+      --dark-foreground: #7c6f64;
+      --light-foreground: #bdae93;
+      --accent: #7daea3;
+      --muted: #665c54;
+      --hover-fill: rgba(212, 190, 152, 0.08);
+      --active-fill: rgba(125, 174, 163, 0.18);
+      --scrim: rgba(40, 40, 40, 0.5);
+      --card-bg: rgba(40, 40, 40, 0.95);
+      --hairline: rgba(212, 190, 152, 0.12);
+      --green: #a9b665;
+      --wallpaper: url("../images/backgrounds/gruvbox.webp");
+    }
+
+    body[data-theme="7"] {
+      --background: #1f1f28;
+      --foreground: #dcd7ba;
+      --bright-foreground: #dcd7ba;
+      --dark-foreground: #727169;
+      --light-foreground: #c8c093;
+      --accent: #dcd7ba;
+      --muted: #54546D;
+      --hover-fill: rgba(220, 215, 186, 0.08);
+      --active-fill: rgba(220, 215, 186, 0.18);
+      --scrim: rgba(31, 31, 40, 0.5);
+      --card-bg: rgba(31, 31, 40, 0.95);
+      --hairline: rgba(220, 215, 186, 0.12);
+      --green: #76946a;
+      --wallpaper: url("../images/backgrounds/kanagawa.webp");
+    }
+
+    body[data-theme="8"] {
+      --background: #222222;
+      --foreground: #c2c2b0;
+      --bright-foreground: #c2c2b0;
+      --dark-foreground: #555555;
+      --light-foreground: #8a8a7e;
+      --accent: #78824b;
+      --muted: #666666;
+      --hover-fill: rgba(194, 194, 176, 0.08);
+      --active-fill: rgba(120, 130, 75, 0.18);
+      --scrim: rgba(34, 34, 34, 0.5);
+      --card-bg: rgba(34, 34, 34, 0.95);
+      --hairline: rgba(194, 194, 176, 0.12);
+      --green: #5f875f;
+      --wallpaper: url("../images/backgrounds/miasma.webp");
+    }
+    body[data-theme="9"] {
+      --background: #2e3440;
+      --foreground: #d8dee9;
+      --bright-foreground: #d8dee9;
+      --dark-foreground: #667080;
+      --light-foreground: #adb5c4;
+      --accent: #81a1c1;
+      --muted: #4c566a;
+      --green: #a3be8c;
+      --hover-fill: rgba(216, 222, 233, 0.08);
+      --active-fill: rgba(129, 161, 193, 0.18);
+      --scrim: rgba(46, 52, 64, 0.5);
+      --card-bg: rgba(46, 52, 64, 0.95);
+      --hairline: rgba(216, 222, 233, 0.12);
+      --wallpaper: url("../images/backgrounds/nord.webp");
+    }
+
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      overflow: hidden; /* it's a desktop — nothing scrolls at document level */
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      font-size: 13px;
+      color: var(--foreground);
+      background-color: var(--background);
+      background-image: var(--wallpaper);
+      background-size: cover;
+      background-position: center;
+    }
+
+    button {
+      font-family: inherit;
+      color: inherit;
+      background: none;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    /* ── Top bar ─────────────────────────────────────────────── */
+
+    .top-bar {
+      position: sticky;
+      top: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      height: var(--bar-height);
+      padding: 0 10px;
+      background: var(--background); /* opaque, like the shell bar */
+      border-bottom: 1px solid var(--hairline);
+      user-select: none;
+    }
+
+    /* Omarchy logo (O mark, from the omarchy icon font glyph) */
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+    }
+
+    .logo svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--bright-foreground);
+    }
+
+    .logo:hover { background: var(--hover-fill); }
+
+    /* workspaces */
+    .workspaces {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .workspace {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      opacity: 0.5; /* idle / unoccupied */
+    }
+
+    .workspace:hover { opacity: 1; background: var(--hover-fill); }
+
+    .workspace.active {
+      opacity: 1;
+      color: var(--selected-text);
+      background: var(--active-fill);
+    }
+
+    /* ── Bar center: clock + weather ─────────────────────────── */
+
+    .top-bar__left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .top-bar__center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .bar-widget {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 28px;
+      padding: 0 8px;
+      border-radius: 6px;
+      color: var(--foreground);
+      white-space: nowrap;
+    }
+
+    .bar-widget:hover { background: var(--hover-fill); }
+
+    .bar-widget.clock { padding: 0 10px; }
+
+    .bar-widget.weather svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+      display: block;
+    }
+
+    .bar-widget.weather.hidden { display: none; }
+
+    /* right section: system icons for the external links */
+    .top-bar__right {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .bar-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      color: var(--foreground);
+      opacity: 0.8;
+    }
+
+    .bar-icon svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+    }
+
+    .bar-icon:hover {
+      opacity: 1;
+      background: var(--hover-fill);
+      color: var(--accent);
+    }
+
+    @media (max-width: 900px) {
+      .top-bar__right { display: none; }
+    }
+
+    /* ── Panels (popup cards below the bar, like the shell) ───── */
+
+    .panel {
+      position: fixed;
+      top: calc(var(--bar-height) + 6px);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 90;
+      display: none;
+      flex-direction: column;
+      background: var(--background); /* popups: opaque */
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+      box-shadow: 0 14px 44px rgba(0, 0, 0, 0.5);
+      color: var(--foreground);
+    }
+
+    .panel.open { display: flex; }
+
+    .panel {
+      max-height: calc(100vh - var(--bar-height) - 18px);
+      overflow-y: auto;
+      scrollbar-width: none; /* overlay-style, like the shell: no visible bars */
+    }
+
+    .panel::-webkit-scrollbar { display: none; }
+
+    /* Calendar panel (clock panel: hero / year rail / grid / nav) */
+
+    .cal-panel {
+      width: min(620px, calc(100vw - 24px));
+      padding: 16px 18px 12px;
+    }
+
+    .cal-hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .cal-hero svg {
+      width: 28px;
+      height: 28px;
+      fill: currentColor;
+    }
+
+    .cal-hero span {
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .cal-hero.clickable { cursor: pointer; }
+
+    .cal-hero.clickable:hover { color: var(--accent); }
+
+    .cal-year-rail {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: min(430px, 100%);
+      margin: 10px auto 0;
+    }
+
+    .cal-year-rail .yr {
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--dim);
+    }
+
+    .cal-track {
+      flex: 1;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--hairline);
+    }
+
+    .cal-track-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: var(--accent);
+      transition: width 0.15s;
+    }
+
+    .cal-year-rail .pct { font-size: 10px; }
+
+    .cal-grid {
+      margin: 12px auto 0;
+      width: fit-content;
+    }
+
+    .cal-week-row {
+      display: flex;
+      align-items: center;
+      height: 30px;
+    }
+
+    .cal-week-num {
+      width: 26px;
+      margin-right: 10px;
+      text-align: center;
+      font-size: 10px;
+      color: var(--dim3);
+    }
+
+    .cal-week-num.w-head {
+      color: var(--dim2);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .cal-week-num.w-head:hover { color: var(--accent); }
+
+    .cal-day-hdr {
+      width: 46px;
+      text-align: center;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--dim);
+      border-left: 1px solid var(--hairline);
+    }
+
+    .cal-cell {
+      width: 46px;
+      height: 28px;
+      margin: 1px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      font-size: 12px;
+      color: var(--foreground);
+    }
+
+    .cal-cell.weekend { color: var(--dim); }
+
+    .cal-cell.out { color: var(--dim3); }
+
+    .cal-cell.today {
+      border-color: var(--border-soft);
+      font-weight: 700;
+    }
+
+    .cal-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 8px;
+    }
+
+    .cal-nav-label {
+      width: 150px;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: var(--dim);
+    }
+
+    .cal-nav-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      color: var(--foreground);
+    }
+
+    .cal-nav-btn:hover {
+      background: var(--hover-fill);
+      color: var(--accent);
+    }
+
+    /* Weather panel */
+
+    .wx-panel {
+      width: min(640px, calc(100vw - 24px));
+      padding: 16px 20px 14px;
+    }
+
+    .wx-hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 0 6px;
+    }
+
+    .wx-hero-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .wx-hero-left svg {
+      width: 52px;
+      height: 52px;
+      fill: currentColor;
+    }
+
+    .wx-temp {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .wx-temp .num {
+      font-size: 46px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .wx-temp .unit {
+      font-size: 18px;
+      margin-top: 6px;
+    }
+
+    .wx-right { text-align: right; }
+
+    .wx-loc-edit {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+
+    .wx-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--dim);
+      cursor: pointer;
+      background: none;
+    }
+
+    .wx-location:hover { color: var(--accent); }
+
+    .wx-location svg {
+      width: 10px;
+      height: 10px;
+      fill: currentColor;
+    }
+
+    .wx-loc-input {
+      width: 170px;
+      font-family: inherit;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--bright-foreground);
+      background: none;
+      border: 1px solid var(--hairline);
+      border-radius: 4px;
+      padding: 3px 6px;
+      outline: none;
+    }
+
+    .wx-loc-clear {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      font-size: 11px;
+      color: var(--dim2);
+    }
+
+    .wx-loc-clear:hover { background: var(--hover-fill); color: var(--accent); }
+
+    .wx-suggest {
+      margin-top: 4px;
+      text-align: right;
+    }
+
+    .wx-suggest-row {
+      display: block;
+      width: 100%;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      text-align: right;
+      color: var(--foreground);
+    }
+
+    .wx-suggest-row:hover { background: var(--hover-fill); color: var(--accent); }
+
+    .wx-suggest-row .region { color: var(--dim); }
+
+    .wx-stats {
+      display: flex;
+      gap: 30px;
+      justify-content: flex-end;
+      margin-top: 12px;
+    }
+
+    .wx-stat-k {
+      font-size: 9px;
+      letter-spacing: 1px;
+      color: var(--dim);
+      margin-bottom: 4px;
+    }
+
+    .wx-stat-v { font-size: 15px; }
+
+    .wx-divider {
+      height: 1px;
+      background: var(--hairline);
+      margin: 14px 0 12px;
+    }
+
+    .wx-forecast {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .wx-day {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .wx-day svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .wx-day-name {
+      font-size: 9px;
+      letter-spacing: 1px;
+      color: var(--dim);
+      margin-bottom: 3px;
+    }
+
+    .wx-day-temps {
+      display: flex;
+      gap: 6px;
+      font-size: 12px;
+    }
+
+    .wx-day-temps .lo { color: var(--dim2); }
+
+    .wx-status {
+      font-size: 11px;
+      font-style: italic;
+      color: var(--dim);
+      padding: 4px 6px;
+    }
+
+    /* ── Videos: a 2×2 grid filling the workspace, like tiled windows ─────── */
+
+    .videos {
+      display: none;
+      position: fixed;
+      inset: calc(var(--bar-height) + 6px) 6px 6px 6px; /* hyprland-style gaps */
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+      z-index: 20;
+    }
+
+    body[data-theme="2"] .videos { display: grid; }
+
+    .video-tile {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      min-width: 0;
+      min-height: 0;
+      background: var(--background);
+      border: 1px solid var(--border-soft);
+      border-radius: 10px; /* hyprland decoration rounding */
+      overflow: hidden;
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
+    }
+
+    .video-face,
+    .video-embed {
+      flex: 1 1 0;
+      min-height: 0;
+      width: 100%;
+      display: block;
+      border: 0;
+      padding: 0;
+    }
+
+    .video-face { position: relative; }
+
+    .video-face img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-play {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-play svg {
+      width: 76px;
+      height: 54px;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.55));
+      transition: transform 0.15s;
+    }
+
+    .video-face:hover .video-play svg { transform: scale(1.05); }
+
+    .video-caption {
+      flex: none;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 6px 12px;
+      background: var(--background);
+      border-top: 1px solid var(--hairline);
+    }
+
+    .video-title {
+      font-size: 12px;
+      color: var(--foreground);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .video-creator {
+      font-size: 11px;
+      color: var(--dim);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 760px) {
+      .videos {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    /* ── The Manual: a full-tile app on workspace 3 ───────────── */
+
+    .webapp {
+      display: none;
+      position: fixed;
+      inset: calc(var(--bar-height) + 6px) 6px 6px 6px;
+      z-index: 20;
+      flex-direction: column;
+      background: var(--background);
+      border: 1px solid var(--border-soft);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
+    }
+
+    body[data-theme="3"] .webapp-manual,
+    body[data-theme="4"] .webapp-news,
+    body[data-theme="5"] .webapp-teams,
+    body[data-theme="6"] .webapp-patrons,
+    body[data-theme="7"] .webapp-sponsorships,
+    body[data-theme="8"] .webapp-air,
+    body[data-theme="9"] .webapp-meetups { display: flex; }
+
+    .webapp-bar {
+      flex: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 30px;
+      padding: 0 12px;
+      background: var(--background);
+      border-bottom: 1px solid var(--hairline);
+      font-size: 11px;
+      color: var(--dim);
+    }
+
+    .webapp-url {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .webapp-frame {
+      flex: 1 1 0;
+      min-height: 0;
+      width: 100%;
+      border: 0;
+      background: var(--background);
+      scrollbar-width: none;
+    }
+
+    /* ── Security reporting popup (closable, any workspace) ────── */
+
+    .security-pop {
+      position: fixed;
+      top: calc(var(--bar-height) + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 95;
+      display: none;
+      flex-direction: column;
+      width: min(920px, calc(100vw - 24px));
+      height: min(78vh, 780px);
+      background: var(--background);
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+      overflow: hidden;
+    }
+
+    .security-pop.open { display: flex; }
+
+    .security-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      height: 34px;
+      padding: 0 6px 0 12px;
+      background: var(--background);
+      border-bottom: 1px solid var(--hairline);
+      font-size: 11px;
+      color: var(--dim);
+    }
+
+    .security-url {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .security-close {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--foreground);
+      flex: none;
+    }
+
+    .security-close:hover { background: var(--hover-fill); color: var(--accent); }
+
+    .security-frame {
+      flex: 1 1 0;
+      min-height: 0;
+      width: 100%;
+      border: 0;
+      background: var(--background);
+    }
+
+    /* cover the embedded page's native scrollbar, like the webapps */
+    .security-pop::after {
+      content: "";
+      position: absolute;
+      top: 34px;
+      right: 0;
+      bottom: 0;
+      width: 16px;
+      background: var(--background);
+      pointer-events: none;
+    }
+
+    /* The manual page scrolls inside its own document, and its native
+       scrollbar cannot be styled across origins. Cover it with a strip so
+       the tile shows no bar (wheel/keys still scroll the page). */
+    .webapp::after {
+      content: "";
+      position: absolute;
+      top: 30px;
+      right: 0;
+      bottom: 0;
+      width: 16px;
+      background: var(--background);
+      pointer-events: none;
+    }
+
+    /* ── The Omarchy shell app (about window) ─────────────────── */
+
+    .app-window {
+      position: fixed;
+      z-index: 80;
+      display: none;
+      flex-direction: column;
+      width: min(640px, calc(100vw - 24px));
+      max-height: calc(100vh - 24px);
+      background: var(--background); /* app windows are opaque, like the shell */
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+      color: var(--foreground);
+      overflow: hidden;
+    }
+
+    .app-window.open { display: flex; }
+
+    /* The shell window is fixed in place, like Omarchy itself: no chrome,
+       no close, no moving — it sits centered on the workspace. */
+
+    .app-body {
+      padding: 24px 28px 28px;
+      overflow-y: auto;
+      scrollbar-width: none;
+      text-align: center;
+    }
+
+    .app-body::-webkit-scrollbar { display: none; }
+
+    .app-logo {
+      display: block;
+      width: 100%;
+      height: auto;
+      color: var(--green); /* official brand mark, tinted per theme */
+    }
+
+    .app-heading {
+      margin: 18px 0 10px;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .app-heading a,
+    .app-subtext a {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .app-subtext {
+      margin: 0 auto;
+      max-width: 46em;
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--dim);
+    }
+
+    .app-icons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .app-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 8px;
+      color: var(--dim);
+      opacity: 0.75;
+    }
+
+    .app-icon svg {
+      width: 23px;
+      height: 23px;
+      fill: currentColor;
+    }
+
+    .app-icon:hover {
+      opacity: 1;
+      background: var(--hover-fill);
+      color: var(--accent);
+    }
+
+    /* ── Footer, from omarchy.org ─────────────────────────────── */
+
+    .app-footer {
+      margin-top: 26px;
+      padding-top: 14px;
+      border-top: 1px solid var(--hairline);
+      color: var(--dim);
+      font-size: 11px;
+      line-height: 2em;
+      text-wrap: pretty;
+    }
+
+    .app-footer-section {
+      display: flex;
+      justify-content: center;
+    }
+
+    .app-footer-section p { margin: 4px 0 0; }
+
+    .app-footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .app-footer a:hover { text-decoration: underline; }
+
+    .app-foot-icon {
+      display: inline-block;
+      color: inherit;
+    }
+
+    .app-foot-icon svg {
+      display: inline-block;
+      height: 1.2em;
+      max-height: 100%;
+      overflow: visible;
+      pointer-events: none;
+      vertical-align: -0.2125em;
+      width: auto;
+    }
+
+    .app-foot-icon strong {
+      display: inline-block;
+      font-weight: inherit;
+      margin-left: -0.3em;
+    }
+
+    .app-foot-icon--37signals strong { margin-left: -0.375em; }
+
+    .app-foot-icon--hey svg { height: 1.4em; vertical-align: -0.3em; }
+
+    .app-foot-icon--cloudflare svg { height: 1.6em; vertical-align: -0.3em; }
+
+    /* ── Launcher ────────────────────────────────────────────── */
+
+    .launcher {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+    }
+
+    .launcher.open { display: block; }
+
+    .launcher__scrim {
+      position: absolute;
+      inset: 0;
+      background: var(--scrim); /* menu scrim, 50% */
+    }
+
+    .launcher__card {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: min(480px, calc(100vw - 32px));
+      max-height: min(640px, calc(100vh - 32px));
+      display: flex;
+      flex-direction: column;
+      background: var(--card-bg); /* menu card, 0.95 */
+      border: 1px solid var(--accent); /* menu border: active-border (accent) */
+      border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+    }
+
+    .launcher__header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .launcher__header svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--bright-foreground);
+      flex: none;
+    }
+
+    .launcher__search {
+      flex: 1;
+      min-width: 0;
+      font-family: inherit;
+      font-size: 13px;
+      color: var(--bright-foreground);
+      background: none;
+      border: 0;
+      outline: 0;
+    }
+
+    .launcher__search::placeholder { color: var(--dark-foreground); }
+
+    .launcher__list {
+      overflow-y: auto;
+      padding: 6px;
+      scrollbar-width: none;
+    }
+
+    .launcher__list::-webkit-scrollbar { display: none; }
+
+    .launcher__empty {
+      padding: 14px;
+      text-align: center;
+      color: var(--dark-foreground);
+      display: none;
+    }
+
+    .launcher__empty.visible { display: block; }
+
+    /* a row, styled like a menu entry */
+    .link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 40px;
+      padding: 0 10px;
+      border-radius: 8px;
+      color: var(--foreground);
+      text-decoration: none;
+      opacity: 0.7;
+    }
+
+    .link svg { width: 16px; height: 16px; flex: none; }
+
+    .link span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .link:hover,
+    .link.selected {
+      opacity: 1;
+      background: var(--hover-fill);
+      color: var(--selected-text);
+    }
+
+    .link.hidden { display: none; }
+
+    .launcher__footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 14px;
+      border-top: 1px solid var(--hairline);
+      color: var(--dark-foreground);
+      font-size: 11px;
+    }
