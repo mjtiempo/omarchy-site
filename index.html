@@ -638,40 +638,49 @@
       padding: 4px 6px;
     }
 
-    /* ── Videos: a 2×2 tile grid that lives on workspace 2 ─────── */
+    /* ── Videos: a 2×2 grid filling the workspace, like tiled windows ─────── */
 
     .videos {
       display: none;
       position: fixed;
-      top: calc(var(--bar-height) + 26px);
-      left: 50%;
-      transform: translateX(-50%);
+      inset: calc(var(--bar-height) + 6px) 6px 6px 6px; /* hyprland-style gaps */
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px 18px;
-      width: min(880px, calc(100vw - 40px));
-      max-height: calc(100vh - var(--bar-height) - 42px);
-      overflow-y: auto;
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      gap: 6px;
       z-index: 20;
     }
 
     body[data-theme="2"] .videos { display: grid; }
 
-    .video-tile { position: relative; margin: 0; }
-
-    .video-face {
-      display: block;
+    .video-tile {
       position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border: 1px solid var(--hairline);
-      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      min-width: 0;
+      min-height: 0;
+      background: var(--background);
+      border: 1px solid var(--border-soft);
+      border-radius: 10px; /* hyprland decoration rounding */
       overflow: hidden;
-      padding: 0;
-      background: var(--selection);
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
     }
 
-    .video-face img {
+    .video-face,
+    .video-embed {
+      flex: 1 1 0;
+      min-height: 0;
+      width: 100%;
       display: block;
+      border: 0;
+      padding: 0;
+    }
+
+    .video-face { position: relative; }
+
+    .video-face img {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -686,40 +695,44 @@
     }
 
     .video-play svg {
-      width: 56px;
-      height: 40px;
-      filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.5));
+      width: 76px;
+      height: 54px;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.55));
       transition: transform 0.15s;
     }
 
-    .video-face:hover .video-play svg { transform: scale(1.06); }
-
-    .video-embed {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-      border-radius: 8px;
-    }
+    .video-face:hover .video-play svg { transform: scale(1.05); }
 
     .video-caption {
-      display: block;
-      padding: 8px 2px 0;
+      flex: none;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 6px 12px;
+      background: var(--background);
+      border-top: 1px solid var(--hairline);
     }
 
     .video-title {
-      display: block;
       font-size: 12px;
-      line-height: 1.35;
       color: var(--foreground);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .video-creator {
-      display: block;
       font-size: 11px;
-      margin-top: 2px;
       color: var(--dim);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 760px) {
+      .videos {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: repeat(4, minmax(0, 1fr));
+      }
     }
 
     /* ── The Omarchy shell app (about window) ─────────────────── */
