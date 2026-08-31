@@ -317,8 +317,10 @@
     .panel {
       max-height: calc(100vh - var(--bar-height) - 18px);
       overflow-y: auto;
-      scrollbar-width: thin;
+      scrollbar-width: none; /* overlay-style, like the shell: no visible bars */
     }
+
+    .panel::-webkit-scrollbar { display: none; }
 
     /* Calendar panel (clock panel: hero / year rail / grid / nav) */
 
@@ -786,6 +788,21 @@
       width: 100%;
       border: 0;
       background: var(--background);
+      scrollbar-width: none;
+    }
+
+    /* The manual page scrolls inside its own document, and its native
+       scrollbar cannot be styled across origins. Cover it with a strip so
+       the tile shows no bar (wheel/keys still scroll the page). */
+    .webapp::after {
+      content: "";
+      position: absolute;
+      top: 30px;
+      right: 0;
+      bottom: 0;
+      width: 16px;
+      background: var(--background);
+      pointer-events: none;
     }
 
     /* ── The Omarchy shell app (about window) ─────────────────── */
@@ -813,8 +830,11 @@
     .app-body {
       padding: 24px 28px 28px;
       overflow-y: auto;
+      scrollbar-width: none;
       text-align: center;
     }
+
+    .app-body::-webkit-scrollbar { display: none; }
 
     .app-logo {
       display: block;
@@ -908,9 +928,10 @@
     .launcher__list {
       overflow-y: auto;
       padding: 6px;
-      scrollbar-width: thin;
-      scrollbar-color: var(--muted) transparent;
+      scrollbar-width: none;
     }
+
+    .launcher__list::-webkit-scrollbar { display: none; }
 
     .launcher__empty {
       padding: 14px;
