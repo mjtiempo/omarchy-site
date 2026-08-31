@@ -851,6 +851,79 @@
       scrollbar-width: none;
     }
 
+    /* ── Security reporting popup (closable, any workspace) ────── */
+
+    .security-pop {
+      position: fixed;
+      top: calc(var(--bar-height) + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 95;
+      display: none;
+      flex-direction: column;
+      width: min(920px, calc(100vw - 24px));
+      height: min(78vh, 780px);
+      background: var(--background);
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+      overflow: hidden;
+    }
+
+    .security-pop.open { display: flex; }
+
+    .security-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      height: 34px;
+      padding: 0 6px 0 12px;
+      background: var(--background);
+      border-bottom: 1px solid var(--hairline);
+      font-size: 11px;
+      color: var(--dim);
+    }
+
+    .security-url {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .security-close {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--foreground);
+      flex: none;
+    }
+
+    .security-close:hover { background: var(--hover-fill); color: var(--accent); }
+
+    .security-frame {
+      flex: 1 1 0;
+      min-height: 0;
+      width: 100%;
+      border: 0;
+      background: var(--background);
+    }
+
+    /* cover the embedded page's native scrollbar, like the webapps */
+    .security-pop::after {
+      content: "";
+      position: absolute;
+      top: 34px;
+      right: 0;
+      bottom: 0;
+      width: 16px;
+      background: var(--background);
+      pointer-events: none;
+    }
+
     /* The manual page scrolls inside its own document, and its native
        scrollbar cannot be styled across origins. Cover it with a strip so
        the tile shows no bar (wheel/keys still scroll the page). */
@@ -1077,9 +1150,9 @@
       <a class="bar-icon" href="https://github.com/omacom/omarchy" target="_blank" rel="noopener noreferrer" title="The Code" aria-label="The Code">
         <svg viewBox="0 0 32 32"><path d="m16 1.00195c-8.28427 0-15 6.71573-15 15 0 6.6274 4.2977 12.2471 10.2598 14.2314.75.1389 1.0254-.3252 1.0254-.7226 0-.3565-.0134-1.302-.0205-2.5557-4.17383.9072-5.05469-2.0117-5.05469-2.0117-.68262-1.7344-1.66602-2.1953-1.66602-2.1953-1.3613-.9306.1035-.9121.1035-.9121 1.5059.1055 2.29883 1.5469 2.29883 1.5469 1.336 2.291 3.5078 1.629 4.3613 1.2451.1367-.9697.5225-1.6318.9502-2.0068-3.3271-.3789-6.8252-1.6631-6.8252-7.4004 0-1.6348.584-2.9726 1.541-4.0205-.1543-.3799-.6689-1.9056.1465-3.9697 0 0 1.2578-.4023 4.1191 1.5361 1.1953-.332 2.4766-.4981 3.752-.504 1.2734.0059 2.5557.172 3.752.504 2.8613-1.9384 4.1152-1.5361 4.1152-1.5361.8184 2.0641.3047 3.5898.1484 3.9697.9609 1.048.5391 2.3857.5391 4.0205 0 3.7461-3.502 7.0166-8.3437 7.3828.5361.4609 1.0137 1.3721 1.0137 2.7676 0 1.9981-.0195 3.6064-.0195 4.0977 0 .4004.2715.8652 1.0351.7197 5.9545-1.9873 10.2481-7.6015 10.2481-14.2265 0-8.28427-6.7157-15-15-15zm-8.625 20.8008c-.0606.1377-.2754.1758-.4707.082-.1953-.0918-.3066-.2754-.2451-.4121.0596-.1358.2734-.1719.4688-.0801.1973.0918.3096.2734.2461.4102zm-1.0918-.8965c-.1299.0938-.3438.0078-.4766-.1836-.1338-.1924-.1348-.4258-.002-.5186.1289-.0937.3242-.0117.458.1797.1367.1953.1387.4317.0205.5225zm-1.5-1.1963c-.1055.0967-.3164.0117-.4863-.1797-.166-.1953-.166-.4219-.0742-.5176.1055-.084.3154-.002.4863.1816.166.1953.166.418.0742.5157zm-1.3184-1.498c-.0576.0899-.2441.0527-.4072-.0742-.166-.127-.251-.3086-.1914-.4023.0606-.0859.2422-.0488.4053.0742.1661.1269.2559.3027.1934.4023zm-.8047-1.6523c-.0254.0937-.1797.1289-.3359.0781-.1563-.0527-.2442-.1797-.2187-.2754.0254-.0947.1787-.1289.334-.0742.1602.0488.2285.1777.2207.2714zm-.2676-1.8398c-.0020.0996-.1543.1465-.3379.1045-.1816-.043-.3106-.1543-.3066-.254 0-.0996.1504-.1445.334-.1025.1816.043.3125.1562.3105.2519z"/></svg>
       </a>
-      <a class="bar-icon" href="/security/" target="_blank" rel="noopener noreferrer" title="Security reporting" aria-label="Security reporting">
+      <button class="bar-icon" id="securityBtn" title="Security reporting" aria-label="Security reporting">
         <svg viewBox="0 0 32 32"><path d="m16 1 7 2.5v7.5c0 5.2-3.5 8.4-7 9.5-3.5-1.1-7-4.3-7-9.5v-7.5z" fill="currentColor"/></svg>
-      </a>
+      </button>
       <a class="bar-icon" href="https://discord.gg/tXFUdasqhY" target="_blank" rel="noopener noreferrer" title="The Discord" aria-label="The Discord">
         <svg viewBox="0 0 32 32"><path d="m22 3c-2 .3-4 .9-5.8 1.9l-.6 1c-2.6-.2-5.2-.1-7.7.4l-.6-1.4c-1.9-1-3.9-1.6-6-1.9.5 1.2.9 2.5 1.2 3.7l-.7.7c-.7 2-1 4.2-.8 6.3.8 0 1.6.1 2.4.2l.6.6c1.9.3 3.8.6 5.7.6h1.1c1.9 0 3.8-.4 5.7-.7l.6-.5c.8-.1 1.6-.2 2.4-.2.2-2.2-.1-4.3-.8-6.4l-.7-.6c.3-1.3.7-2.5 1.2-3.7zm-10.5 8.5c-.7 0-1.2-.6-1.2-1.3s.5-1.3 1.2-1.3 1.2.6 1.2 1.3-.5 1.3-1.2 1.3zm6.5 0c-.7 0-1.2-.6-1.2-1.3s.5-1.3 1.2-1.3 1.2.6 1.2 1.3-.5 1.3-1.2 1.3zm-10.3 2.7c-.9.6-1.9 1.2-2.9 1.7-.1.1-.1.2-.1.4.2 2.9 1.4 5.7 3.4 7.9.2.3.6.3.9.2 1.4-.7 2.7-1.6 3.9-2.6.3-.2.4-.6.2-.9-.6-.8-1.1-1.6-1.5-2.5-.7 0-1-.5-.9-.9.1-.4.6-.7 1-.6h1.1c.6.1 1.2.1 1.9.1h1.9c.7 0 1.3 0 1.9-.1h1.1c.4-.1.9.2 1 .6.1.4-.2.9-.9.9-.4.9-.9 1.7-1.5 2.5-.2.3-.1.7.2.9 1.2 1 2.5 1.9 3.9 2.6.3.1.7.1.9-.2 2-2.2 3.2-5 3.4-7.9 0-.2 0-.3-.1-.4-1-.5-2-1.1-2.9-1.7-.2-.1-.5-.1-.7 0-1.4.8-2.9 1.2-4.5 1.2h-1.1c-1.6 0-3.1-.4-4.5-1.2-.2-.1-.5-.1-.7 0z" fill="currentColor" fill-rule="evenodd"/></svg>
       </a>
@@ -1105,6 +1178,14 @@
       <span class="cal-nav-label" id="calMonthLabel"></span>
       <button class="cal-nav-btn" id="calNext" aria-label="Next month">&#8250;</button>
     </div>
+  </div>
+
+  <div class="panel security-pop" id="securityPop" role="dialog" aria-label="Security reporting">
+    <div class="security-bar">
+      <span class="security-url">https://omarchy.org/security/</span>
+      <button class="security-close" id="securityClose" aria-label="Close">&#10005;</button>
+    </div>
+    <iframe class="security-frame" src="https://omarchy.org/security/" loading="lazy" title="Security reporting"></iframe>
   </div>
 
   <div class="panel wx-panel" id="wxPanel" role="dialog" aria-label="Weather">
@@ -1923,6 +2004,21 @@
       });
     }
 
+    /* ── Security popup ────────────────────────────────────────── */
+
+    const securityPop = document.getElementById("securityPop");
+
+    function toggleSecurity() {
+      securityPop.classList.toggle("open");
+    }
+
+    function closeSecurity() {
+      securityPop.classList.remove("open");
+    }
+
+    document.getElementById("securityBtn").addEventListener("click", toggleSecurity);
+    document.getElementById("securityClose").addEventListener("click", closeSecurity);
+
     /* ── Panel manager ────────────────────────────────────────── */
 
     function closePanels() {
@@ -1945,6 +2041,7 @@
 
     document.addEventListener("keydown", (event) => {
       if (launcher.classList.contains("open")) return;
+      if (securityPop.classList.contains("open") && event.key === "Escape") { closeSecurity(); return; }
       const calOpen = calPanel.classList.contains("open");
       if (calOpen && !wxEditing) {
         if (event.key === "Escape") { closePanels(); }
@@ -1972,6 +2069,7 @@
     setInterval(() => { if (!wxEditing) { wxRetries = 0; wxFetch(); } }, 15 * 60 * 1000);
 
     if (location.hash === "#about") setTheme(1);
+    else if (location.hash === "#security") toggleSecurity();
     syncAboutWindow();
     if (location.hash === "#menu") { open(); } else if (location.hash === "#clock") { openPanel(calPanel); } else if (location.hash === "#weather") { openPanel(wxPanel); }
 
