@@ -17,7 +17,7 @@
         ws.classList.toggle("active", isActive);
         ws.setAttribute("aria-current", isActive ? "true" : "false");
       }
-      try { localStorage.setItem("omarchy-theme", String(n)); } catch (e) {}
+      try { localStorage.setItem("omarchy-theme", String(n)); } catch {}
       if (n !== 2) resetVideos(); // videos belong to workspace 2; stop playback elsewhere
     }
 
@@ -26,7 +26,7 @@
     }
 
     let savedTheme = 1;
-    try { savedTheme = Number(localStorage.getItem("omarchy-theme")) || 1; } catch (e) {}
+    try { savedTheme = Number(localStorage.getItem("omarchy-theme")) || 1; } catch {}
     const urlTheme = Number(new URLSearchParams(location.search).get("theme"));
     if (urlTheme) savedTheme = urlTheme;
     setTheme(savedTheme >= 1 && savedTheme <= 9 ? savedTheme : 1);
@@ -113,7 +113,7 @@
 
     // Qt format tokens, per the shell's clock widget
     let clockFormat = "dddd HH:mm";
-    try { clockFormat = localStorage.getItem("omarchy-clock-format") || clockFormat; } catch (e) {}
+    try { clockFormat = localStorage.getItem("omarchy-clock-format") || clockFormat; } catch {}
 
     function formatClock(date, format) {
       return String(format).replace(/'([^']*)'|(dddd|ddd|MMMM|MMM|yyyy|ww|HH|hh|mm|ss|AP|h|d)/g, (m, lit, tok) => {
@@ -155,7 +155,7 @@
       event.preventDefault();
       const index = CLOCK_FORMATS.indexOf(clockFormat);
       clockFormat = CLOCK_FORMATS[(index + 1) % CLOCK_FORMATS.length];
-      try { localStorage.setItem("omarchy-clock-format", clockFormat); } catch (e) {}
+      try { localStorage.setItem("omarchy-clock-format", clockFormat); } catch {}
       renderClock();
     });
 
@@ -174,12 +174,12 @@
       try {
         const info = new Intl.Locale(navigator.language).weekInfo;
         if (info && info.firstDay) return info.firstDay % 7;
-      } catch (e) {}
+      } catch {}
       return 0;
     }
 
     let weekStart = 0;
-    try { weekStart = Number(localStorage.getItem("omarchy-week-start")); } catch (e) {}
+    try { weekStart = Number(localStorage.getItem("omarchy-week-start")); } catch {}
     if (Number.isNaN(weekStart) || weekStart < 0 || weekStart > 6) weekStart = localeFirstDay();
 
     function calToday() { return new Date(); }
@@ -237,7 +237,7 @@
       head.title = "Start weeks on " + (weekStart === 1 ? "Sunday" : "Monday");
       head.addEventListener("click", () => {
         weekStart = weekStart === 1 ? 0 : 1;
-        try { localStorage.setItem("omarchy-week-start", String(weekStart)); } catch (e) {}
+        try { localStorage.setItem("omarchy-week-start", String(weekStart)); } catch {}
         renderCal();
       });
       headerRow.appendChild(head);
@@ -353,7 +353,7 @@
 
     const wxState = { current: null, days: [], location: "", settled: false, loading: false, reqId: 0 };
     let wxLocation = null;
-    try { wxLocation = JSON.parse(localStorage.getItem("omarchy-weather-location") || "null"); } catch (e) { wxLocation = null; }
+    try { wxLocation = JSON.parse(localStorage.getItem("omarchy-weather-location") || "null"); } catch { wxLocation = null; }
     let wxEditing = false;
     let wxSuggestions = [];
     let wxRetries = 0;
@@ -530,7 +530,7 @@
 
     function commitLocation(loc) {
       wxLocation = loc;
-      try { localStorage.setItem("omarchy-weather-location", loc ? JSON.stringify(loc) : "null"); } catch (e) {}
+      try { localStorage.setItem("omarchy-weather-location", loc ? JSON.stringify(loc) : "null"); } catch {}
       wxEditing = false;
       wxSuggestions = [];
       wxSuggest.innerHTML = "";
@@ -631,6 +631,20 @@
     document.getElementById("securityBtn").addEventListener("click", toggleSecurity);
     document.getElementById("securityClose").addEventListener("click", closeSecurity);
 
+    /* ── Brand popup (footer link, same behavior as security) ──── */
+
+    const brandPop = document.getElementById("brandPop");
+
+    function toggleBrand() {
+      brandPop.classList.toggle("open");
+    }
+
+    document.getElementById("brandBtn").addEventListener("click", (event) => {
+      event.preventDefault();
+      toggleBrand();
+    });
+    document.getElementById("brandClose").addEventListener("click", () => brandPop.classList.remove("open"));
+
     // keep the shell app centered when the window resizes
     window.addEventListener("resize", () => {
       if (appWindow.classList.contains("open")) centerAbout();
@@ -659,6 +673,7 @@
     document.addEventListener("keydown", (event) => {
       if (launcher.classList.contains("open")) return;
       if (securityPop.classList.contains("open") && event.key === "Escape") { closeSecurity(); return; }
+      if (brandPop.classList.contains("open") && event.key === "Escape") { brandPop.classList.remove("open"); return; }
       const calOpen = calPanel.classList.contains("open");
       if (calOpen && !wxEditing) {
         if (event.key === "Escape") { closePanels(); }
@@ -673,7 +688,7 @@
         else if (event.key === "t" || event.key === "T") { goToToday(); }
         else if (event.key === "w" || event.key === "W") {
           weekStart = weekStart === 1 ? 0 : 1;
-          try { localStorage.setItem("omarchy-week-start", String(weekStart)); } catch (e) {}
+          try { localStorage.setItem("omarchy-week-start", String(weekStart)); } catch {}
           renderCal();
         }
       } else if (wxPanel.classList.contains("open") && event.key === "Escape" && !wxEditing) {
@@ -687,6 +702,7 @@
 
     if (location.hash === "#about") setTheme(1);
     else if (location.hash === "#security") toggleSecurity();
+    else if (location.hash === "#brand") toggleBrand();
     syncAboutWindow();
     if (location.hash === "#menu") { open(); } else if (location.hash === "#clock") { openPanel(calPanel); } else if (location.hash === "#weather") { openPanel(wxPanel); }
 
