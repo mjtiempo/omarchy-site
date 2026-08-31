@@ -170,7 +170,10 @@
 
     * { box-sizing: border-box; }
 
-    html, body { height: 100%; }
+    html, body {
+      height: 100%;
+      overflow: hidden; /* it's a desktop — nothing scrolls at document level */
+    }
 
     body {
       margin: 0;
@@ -310,6 +313,12 @@
     }
 
     .panel.open { display: flex; }
+
+    .panel {
+      max-height: calc(100vh - var(--bar-height) - 18px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
 
     /* Calendar panel (clock panel: hero / year rail / grid / nav) */
 
