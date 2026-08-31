@@ -762,7 +762,9 @@
     }
 
     body[data-theme="3"] .webapp-manual,
-    body[data-theme="4"] .webapp-news { display: flex; }
+    body[data-theme="4"] .webapp-news,
+    body[data-theme="5"] .webapp-teams,
+    body[data-theme="6"] .webapp-patrons { display: flex; }
 
     .webapp-bar {
       flex: none;
@@ -1103,6 +1105,20 @@
       <span class="webapp-url">https://omarchy.org/news/</span>
     </div>
     <iframe class="webapp-frame" src="https://omarchy.org/news/" loading="lazy" title="Omarchy News"></iframe>
+  </div>
+
+  <div class="webapp webapp-teams" id="teamsApp">
+    <div class="webapp-bar">
+      <span class="webapp-url">https://omarchy.org/teams/</span>
+    </div>
+    <iframe class="webapp-frame" src="https://omarchy.org/teams/" loading="lazy" title="The Teams"></iframe>
+  </div>
+
+  <div class="webapp webapp-patrons" id="patronsApp">
+    <div class="webapp-bar">
+      <span class="webapp-url">https://omarchy.org/patrons/</span>
+    </div>
+    <iframe class="webapp-frame" src="https://omarchy.org/patrons/" loading="lazy" title="The Patrons"></iframe>
   </div>
   <div class="app-window" id="appWindow" role="dialog" aria-label="Omarchy shell">
     <div class="app-body">
